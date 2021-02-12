@@ -79,7 +79,8 @@
     }
 
     li + li {
-      margin-left: 5em;
+      // margin-left: 5em;
+      margin-left: clamp(3rem, 5vw, 5rem);
     }
   }
 }
