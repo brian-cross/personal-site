@@ -4,7 +4,9 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link rel="dns-prefetch" href="//fonts.googleapis.com"></link>
+        </Head>
         <body>
           <Main />
           <NextScript />
