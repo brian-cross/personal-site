@@ -11,9 +11,10 @@ import {
 export default function Home() {
   const strings = [
     "build cool stuff.",
-    "make awesome websites.",
     "promote your business.",
+    "make awesome websites.",
     "increase your sales.",
+    "create useful apps.",
   ];
 
   const [stringIndex, setStringIndex] = useState(0);
@@ -25,7 +26,7 @@ export default function Home() {
         <h2 className={subHeading}>
           {"I use code to: "}
           <Typed
-            typingInterval={200}
+            typingInterval={150}
             typingDelay={2000}
             backspaceInterval={100}
             backspaceDelay={2000}
