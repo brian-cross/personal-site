@@ -44,7 +44,12 @@ export default function Header() {
         >
           <li>
             <Link href="#">
-              <a>Posts</a>
+              <a>Work</a>
+            </Link>
+          </li>
+          <li>
+            <Link href="#">
+              <a>Blog</a>
             </Link>
           </li>
           <li>
