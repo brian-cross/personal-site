@@ -7,19 +7,19 @@
 
 .headingContainer {
   // transform: translateY(8rem);
-  transform: translateY(15vh);
+  transform: translateY(10vh);
 }
 
 .heading {
   // font-size: 6rem;
-  font-size: clamp(40px, 8vw, 96px);
+  font-size: clamp(36px, 8vw, 96px);
 }
 
 .subHeading {
   // font-size: 3rem;
   margin-left: 0.25em;
   margin-top: 0.2em;
-  font-size: clamp(20px, 4vw, 48px);
+  font-size: clamp(18px, 4vw, 48px);
 }
 
 .heading,
@@ -27,4 +27,26 @@
   transform: rotate(-5deg);
   text-shadow: 0.05em 0.05em #b00000;
   // font-size: clamp(12px, 1.5vw, 16px);
+}
+
+.typed {
+  border-right: 0.1em solid red;
+  padding-right: 0.2em;
+  text-decoration: underline #b00000;
+  animation: cursor 1s linear infinite;
+}
+
+@keyframes cursor {
+  0% {
+    border-right-color: red;
+  }
+  49% {
+    border-right-color: red;
+  }
+  50% {
+    border-right-color: transparent;
+  }
+  99% {
+    border-right-color: transparent;
+  }
 }
