@@ -9,9 +9,12 @@ export default function Footer() {
   return (
     <footer className={footer}>
       <div className={content}>
-        <span className={copyright}>&copy; {new Date().getFullYear()}</span>
+        <span className={copyright}>
+          &copy; {new Date().getFullYear()} - Brian Cross
+        </span>
         <span className={madeIn}>
-          Handcrafted in <img src="/maple-leaf.svg" alt="Canada"></img>
+          Made in Canada
+          <img src="/maple-leaf.svg" alt="maple leaf"></img>
         </span>
       </div>
     </footer>
