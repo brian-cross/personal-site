@@ -5,7 +5,8 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <link rel="dns-prefetch" href="//fonts.googleapis.com"></link>
+          <link rel="dns-prefetch" href="https://fonts.googleapis.com"></link>
+          <link rel="preload" href="https://fonts.googleapis.com"></link>
         </Head>
         <body>
           <Main />
