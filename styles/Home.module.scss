@@ -1,0 +1,30 @@
+@use "sizes";
+
+.main {
+  @include sizes.page-container;
+  height: 100%;
+}
+
+.headingContainer {
+  // transform: translateY(8rem);
+  transform: translateY(15vh);
+}
+
+.heading {
+  // font-size: 6rem;
+  font-size: clamp(40px, 8vw, 96px);
+}
+
+.subHeading {
+  // font-size: 3rem;
+  margin-left: 0.25em;
+  margin-top: 0.2em;
+  font-size: clamp(20px, 4vw, 48px);
+}
+
+.heading,
+.subHeading {
+  transform: rotate(-5deg);
+  text-shadow: 0.05em 0.05em #b00000;
+  // font-size: clamp(12px, 1.5vw, 16px);
+}
