@@ -14,7 +14,12 @@ export default function Footer() {
         </span>
         <span className={madeIn}>
           Made in Canada
-          <img src="/maple-leaf.svg" alt="maple leaf"></img>
+          <img
+            src="/maple-leaf.svg"
+            alt="maple leaf"
+            width={24}
+            height={24}
+          ></img>
         </span>
       </div>
     </footer>
