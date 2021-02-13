@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 import {
   main,
@@ -22,13 +23,25 @@ export default function Home() {
   return (
     <main className={main}>
       <div className={headingContainer}>
-        <h1 className={heading}>Hey, I'm Brian.</h1>
-        <h2 className={subHeading}>
+        <motion.h1
+          initial={{ y: "0.5em", rotate: -5, opacity: 0 }}
+          animate={{ y: "0em", rotate: -5, opacity: 1 }}
+          transition={{ delay: 0.25, duration: 0.75 }}
+          className={heading}
+        >
+          Hey, I'm Brian.
+        </motion.h1>
+        <motion.h2
+          initial={{ y: "0.5em", rotate: -5, opacity: 0 }}
+          animate={{ y: "0em", rotate: -5, opacity: 1 }}
+          transition={{ delay: 1.25, duration: 0.75 }}
+          className={subHeading}
+        >
           {"I use code to: "}
           <Typed
             typingInterval={150}
-            typingDelay={2000}
-            backspaceInterval={100}
+            typingDelay={1750}
+            backspaceInterval={75}
             backspaceDelay={2000}
             onComplete={phase => {
               if (phase === "backspace")
@@ -37,7 +50,7 @@ export default function Home() {
           >
             {strings[stringIndex]}
           </Typed>
-        </h2>
+        </motion.h2>
       </div>
     </main>
   );
