@@ -7,7 +7,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <title>Brian Cross | Web Developer</title>
+        <title>Brian Cross - Web Developer</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0"
