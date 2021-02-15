@@ -10,13 +10,37 @@ import {
 } from "../styles/Header.module.scss";
 
 export default function Header() {
-  const [, setMenuOpen] = useState(false);
+  console.log("rendering");
+
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
 
   let menuButton = useRef(null);
   let menu = useRef(null);
   const timeline = useRef();
 
   useEffect(() => {
+    if (mobileView) {
+      initMenuAnimation();
+    } else {
+      clearMenuInlineStyles(menu);
+    }
+  }, [mobileView]);
+
+  useEffect(() => {
+    const mediaList = window.matchMedia("screen and (min-width: 700px)");
+    if (!mediaList.matches) setMobileView(true);
+
+    mediaList.addEventListener("change", e => {
+      if (e.matches) {
+        setMobileView(false);
+      } else {
+        setMobileView(true);
+      }
+    });
+  }, []);
+
+  function initMenuAnimation() {
     const menuUp = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
     const menuDown = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
 
@@ -38,7 +62,12 @@ export default function Header() {
         { opacity: 0, y: "1em", stagger: 0.125 },
         { opacity: 1, y: "0em", stagger: 0.125 }
       );
-  }, []);
+  }
+
+  function clearMenuInlineStyles(menu) {
+    menu.removeAttribute("style");
+    menu.querySelectorAll("li").forEach(li => li.removeAttribute("style"));
+  }
 
   function handleMenuButton() {
     setMenuOpen(prev => {
