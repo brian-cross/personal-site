@@ -17,7 +17,6 @@ export default function Header() {
   const timeline = useRef();
 
   useEffect(() => {
-    console.log("useEffect");
     if (mobileView) {
       initMenuAnimation();
     } else {
