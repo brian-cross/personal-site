@@ -3,14 +3,13 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 import {
   header,
-  homelink,
   menuIcon,
   navLink,
   navLinks,
 } from "../styles/Header.module.scss";
 
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [, setMenuOpen] = useState(false);
   const [mobileView, setMobileView] = useState(false);
 
   let menuButton = useRef(null);
@@ -18,6 +17,7 @@ export default function Header() {
   const timeline = useRef();
 
   useEffect(() => {
+    console.log("useEffect");
     if (mobileView) {
       initMenuAnimation();
     } else {
@@ -27,6 +27,7 @@ export default function Header() {
 
   useEffect(() => {
     const mediaList = window.matchMedia("screen and (min-width: 700px)");
+
     if (!mediaList.matches) setMobileView(true);
 
     mediaList.addEventListener("change", e => {
@@ -79,7 +80,7 @@ export default function Header() {
     <header className={header}>
       <nav>
         <Link href="/">
-          <a className={homelink}>
+          <a>
             <h1>Brian Cross</h1>
           </a>
         </Link>
@@ -89,24 +90,24 @@ export default function Header() {
           onClick={handleMenuButton}
         />
         <ul className={navLinks} ref={el => (menu = el)}>
-          <li>
+          <li className={navLink}>
             <Link href="#">
-              <a className={navLink}>Work</a>
+              <a>Work</a>
             </Link>
           </li>
-          <li>
+          <li className={navLink}>
             <Link href="#">
-              <a className={navLink}>Blog</a>
+              <a>Blog</a>
             </Link>
           </li>
-          <li>
+          <li className={navLink}>
             <Link href="#">
-              <a className={navLink}>About</a>
+              <a>About</a>
             </Link>
           </li>
-          <li>
+          <li className={navLink}>
             <Link href="#">
-              <a className={navLink}>Contact</a>
+              <a>Contact</a>
             </Link>
           </li>
         </ul>

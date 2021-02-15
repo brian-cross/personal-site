@@ -19,13 +19,6 @@
     @include sizes.page-container;
   }
 
-  a.homelink {
-    transition: color ease 0.3s;
-    &:hover {
-      color: colors.$menu-bg;
-    }
-  }
-
   .menuIcon {
     position: relative;
     height: 1.5rem;
@@ -53,6 +46,11 @@
 
   h1 {
     font-size: 1.5rem;
+    transition: color 0.25s linear;
+
+    &:hover {
+      color: colors.$menu-bg;
+    }
   }
 
   .navLinks {
@@ -67,7 +65,7 @@
     visibility: hidden;
   }
 
-  li + li {
+  .navLink + .navLink {
     margin-top: 1.5em;
   }
 
@@ -82,36 +80,20 @@
       font-size: 1rem;
       background-color: inherit;
       visibility: visible;
-    }
 
-    li {
-      display: inline;
-    }
+      .navLink {
+        display: inline-block;
+        transition: transform 0.25s ease-in-out, color 0.25s linear;
 
-    li + li {
-      margin-left: clamp(3rem, 5vw, 5rem);
-    }
-
-    a.navLink {
-      position: relative;
-      padding-left: 0.33em;
-
-      &::after {
-        content: "";
-        position: absolute;
-        top: 85%;
-        left: 50%;
-        width: 0;
-        height: 0.25em;
-        border-radius: 0.25em;
-        background-color: colors.$menu-bg;
-        opacity: 80%;
-        transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+        &:hover {
+          color: colors.$menu-bg;
+          transform: translateY(-0.15em);
+        }
       }
 
-      &:hover::after {
-        width: 100%;
-        left: 0;
+      .navLink + .navLink {
+        margin-top: 0;
+        margin-left: clamp(3rem, 5vw, 5rem);
       }
     }
   }
