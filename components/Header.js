@@ -10,8 +10,6 @@ import {
 } from "../styles/Header.module.scss";
 
 export default function Header() {
-  console.log("rendering");
-
   const [menuOpen, setMenuOpen] = useState(false);
   const [mobileView, setMobileView] = useState(false);
 
