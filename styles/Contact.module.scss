@@ -1,0 +1,84 @@
+@use "colors";
+@use "sizes";
+
+.main {
+  @include sizes.page-container;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media screen and (min-width: 700px) {
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.formContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header"
+    "first last"
+    "email email"
+    "description description"
+    "button button";
+  gap: 1rem;
+  width: 100%;
+  max-width: 35rem;
+  margin: 2rem 0;
+
+  input {
+    height: 3em;
+    padding: 0 1em;
+  }
+
+  textarea {
+    height: 15em;
+    padding: 1em;
+    resize: vertical;
+  }
+
+  input,
+  textarea {
+    color: colors.$font-secondary;
+    background-color: colors.$header-bg;
+    border: none;
+    width: 100%;
+  }
+
+  button {
+    height: 4em;
+  }
+}
+
+.header {
+  grid-area: header;
+  align-self: center;
+}
+
+.first {
+  grid-area: first;
+}
+
+.last {
+  grid-area: last;
+}
+
+.email {
+  grid-area: email;
+}
+
+.description {
+  grid-area: description;
+}
+
+.button {
+  grid-area: button;
+  text-transform: uppercase;
+  letter-spacing: 0.33em;
+  color: colors.$font-primary;
+  background-color: transparent;
+  border: 0.1em solid colors.$font-primary;
+}
