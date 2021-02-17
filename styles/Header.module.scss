@@ -46,6 +46,7 @@
 
   h1 {
     font-size: 1.5rem;
+    margin: 0;
     transition: color 0.25s linear;
 
     &:hover {
@@ -60,6 +61,8 @@
     left: 0;
     right: 0;
     font-size: 1.25rem;
+    padding: 1.5em;
+    margin: 0;
     background-color: colors.$menu-bg;
     visibility: hidden;
   }
@@ -77,6 +80,7 @@
       position: static;
       margin-left: auto;
       font-size: 1rem;
+      padding: 0;
       background-color: inherit;
       visibility: visible;
 
