@@ -67,7 +67,8 @@ export default function Header() {
     menu.querySelectorAll("li").forEach(li => li.removeAttribute("style"));
   }
 
-  function handleMenuButton() {
+  function handleMenu() {
+    if (!mobileView) return;
     setMenuOpen(prev => {
       if (!prev) timeline.current.play();
       else timeline.current.reverse();
@@ -86,9 +87,9 @@ export default function Header() {
         <div
           className={menuIcon}
           ref={el => (menuButton = el)}
-          onClick={handleMenuButton}
+          onClick={handleMenu}
         />
-        <ul className={navLinks} ref={el => (menu = el)}>
+        <ul className={navLinks} ref={el => (menu = el)} onClick={handleMenu}>
           <li className={navLink}>
             <Link href="#">
               <a>Work</a>
@@ -100,7 +101,7 @@ export default function Header() {
             </Link>
           </li>
           <li className={navLink}>
-            <Link href="#">
+            <Link href="/about">
               <a>About</a>
             </Link>
           </li>
