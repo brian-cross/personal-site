@@ -1,8 +1,11 @@
 // Color definitions
 $white: white;
 $black: black;
-$medium-grey: #808080;
-$dark-grey: #262626;
+$light-grey: hsl(0, 0%, 75%);
+$medium-grey: hsl(0, 0%, 50%);
+$medium-dark-grey: hsl(0, 0%, 25%);
+$dark-grey: hsl(0, 0%, 15%);
+$darkest-grey: hsl(0, 0%, 7%);
 
 // Typography colors
 $font-primary: $white;
@@ -14,3 +17,7 @@ $footer-separator: $dark-grey;
 $header-bg: $dark-grey;
 $menu-bg: $medium-grey;
 $site-bg: $black;
+
+// Scrollbar colors
+$scrollbar-track: $darkest-grey;
+$scrollbar-thumb: $medium-grey;
