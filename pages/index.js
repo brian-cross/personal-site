@@ -23,7 +23,7 @@ export default function Home() {
     <main className={main}>
       <div className={headingContainer}>
         <h1 className={heading}>Hey, I'm Brian.</h1>
-        <h2 className={subHeading}>
+        {/* <h2 className={subHeading}>
           {"I use code to: "}
           <Typed
             typingInterval={150}
@@ -37,7 +37,7 @@ export default function Home() {
           >
             {strings[stringIndex]}
           </Typed>
-        </h2>
+        </h2> */}
       </div>
     </main>
   );
