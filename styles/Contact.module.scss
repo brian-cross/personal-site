@@ -9,7 +9,6 @@
   justify-content: center;
 
   @media screen and (min-width: 700px) {
-    align-items: center;
     justify-content: flex-end;
   }
 }
@@ -24,10 +23,10 @@
     "email email"
     "description description"
     "button button";
-  gap: 1rem;
+  gap: 2rem;
   width: 100%;
-  max-width: 35rem;
-  margin: 2rem 0;
+  max-width: 40rem;
+  margin-top: 2rem;
 
   input {
     height: 3em;
