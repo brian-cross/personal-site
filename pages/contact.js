@@ -1,3 +1,6 @@
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+
 import {
   main,
   formContainer,
@@ -10,9 +13,23 @@ import {
 } from "../styles/Contact.module.scss";
 
 export default function Contact() {
+  let form = useRef(null);
+
+  useEffect(() => {
+    const formElements = form.querySelectorAll("*");
+
+    gsap.from(formElements, {
+      opacity: 0,
+      y: 32,
+      stagger: 0.3,
+      delay: 0.5,
+      duration: 1.5,
+    });
+  }, []);
+
   return (
     <main className={main}>
-      <div className={formContainer}>
+      <div className={formContainer} ref={el => (form = el)}>
         <h1 className={header}>Let's start something...</h1>
         <input
           className={first}
