@@ -3,6 +3,7 @@
 .main {
   @include sizes.page-container;
   height: 100%;
+  perspective: clamp(500px, 90vw, 1500px);
 }
 
 .headingContainer {
