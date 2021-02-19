@@ -5,10 +5,11 @@
   @include sizes.page-container;
   height: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
 
   @media screen and (min-width: 700px) {
+    align-items: center;
     justify-content: flex-end;
   }
 }
@@ -26,7 +27,11 @@
   gap: 2rem;
   width: 100%;
   max-width: 40rem;
-  margin-top: 2rem;
+  margin: 1rem 0;
+
+  @media screen and (min-width: 700px) {
+    margin: 3rem 0;
+  }
 
   input {
     height: 3em;
@@ -55,6 +60,12 @@
 .header {
   grid-area: header;
   align-self: center;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+
+  @media screen and (min-width: 700px) {
+    margin-top: 0;
+  }
 }
 
 .first {
