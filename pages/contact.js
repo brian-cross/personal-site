@@ -23,7 +23,7 @@ export default function Contact() {
       y: 32,
       stagger: 0.3,
       delay: 0.5,
-      duration: 1.5,
+      duration: 1,
     });
   }, []);
 
