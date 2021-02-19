@@ -1,3 +1,5 @@
+// https://ellismin.com/2020/05/next-page-transition/
+
 import {
   TransitionGroup,
   Transition as ReactTransition,
@@ -22,7 +24,7 @@ const getTransitionStyles = {
 
 const Transition = ({ children, location }) => {
   return (
-    <TransitionGroup style={{ position: "relative" }}>
+    <TransitionGroup style={{ position: "relative", height: "100%" }}>
       <ReactTransition
         key={location}
         timeout={{
@@ -33,6 +35,7 @@ const Transition = ({ children, location }) => {
         {status => (
           <div
             style={{
+              height: "100%",
               ...getTransitionStyles[status],
             }}
           >
