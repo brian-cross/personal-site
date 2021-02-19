@@ -46,7 +46,7 @@ export default function Header() {
     gsap
       .timeline(menuDefaults)
       .to(menuButton, { rotation: 180 }, 0)
-      .to(menu, { clipPath: menuDown }, 0)
+      .to(menu, { clipPath: menuDown, visibility: "visible" }, 0)
       .to(`.${menu.className} > li`, { opacity: 1, y: "0em", stagger: 0.125 });
   }
 
@@ -60,7 +60,8 @@ export default function Header() {
         y: "1em",
         stagger: { each: 0.125, from: "end" },
       })
-      .to(menu, { clipPath: menuUp }, fast ? 0 : null);
+      .to(menu, { clipPath: menuUp }, fast ? 0 : null)
+      .to(menu, { visibility: "hidden" });
   }
 
   function handleMenu(fast) {

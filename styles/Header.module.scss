@@ -65,6 +65,7 @@
     margin: 0;
     background-color: colors.$menu-bg;
     clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    visibility: hidden;
 
     .navLink {
       opacity: 0;
@@ -88,6 +89,7 @@
       padding: 0;
       background-color: inherit;
       clip-path: none;
+      visibility: visible;
 
       .navLink {
         display: inline-block;
