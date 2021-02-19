@@ -14,14 +14,12 @@ export default function Header() {
 
   let menuButton = useRef(null);
   let menu = useRef(null);
-  const timeline = useRef();
+  const menuDefaults = { defaults: { duration: 0.3, ease: "power1.inOut" } };
+  const menuUp = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
+  const menuDown = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
 
   useEffect(() => {
-    if (mobileView) {
-      initMenuAnimation();
-    } else {
-      clearMenuInlineStyles(menu);
-    }
+    if (!mobileView) clearMenuInlineStyles(menu);
   }, [mobileView]);
 
   useEffect(() => {
@@ -38,40 +36,38 @@ export default function Header() {
     });
   }, []);
 
-  function initMenuAnimation() {
-    const menuUp = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
-    const menuDown = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
-
-    timeline.current = gsap.timeline({
-      paused: true,
-      defaults: { duration: 0.3, ease: "power1.inOut" },
-    });
-
-    timeline.current
-      .fromTo(menuButton, { rotation: 0 }, { rotation: 180 }, 0)
-      .fromTo(
-        menu,
-        { clipPath: menuUp, visibility: "hidden" },
-        { clipPath: menuDown, visibility: "visible" },
-        0
-      )
-      .fromTo(
-        `.${menu.className} > li`,
-        { opacity: 0, y: "1em", stagger: 0.125 },
-        { opacity: 1, y: "0em", stagger: 0.125 }
-      );
-  }
-
   function clearMenuInlineStyles(menu) {
     menu.removeAttribute("style");
     menu.querySelectorAll("li").forEach(li => li.removeAttribute("style"));
   }
 
-  function handleMenu() {
+  function openMenu() {
+    console.log("openMenu");
+    gsap
+      .timeline(menuDefaults)
+      .to(menuButton, { rotation: 180 }, 0)
+      .to(menu, { clipPath: menuDown }, 0)
+      .to(`.${menu.className} > li`, { opacity: 1, y: "0em", stagger: 0.125 });
+  }
+
+  function closeMenu(fast) {
+    console.log("closeMenu", fast);
+    gsap
+      .timeline(menuDefaults)
+      .to(menuButton, { rotation: 0 }, 0)
+      .to(`.${menu.className} > li`, {
+        opacity: 0,
+        y: "1em",
+        stagger: { each: 0.125, from: "end" },
+      })
+      .to(menu, { clipPath: menuUp }, fast ? 0 : null);
+  }
+
+  function handleMenu(fast) {
     if (!mobileView) return;
     setMenuOpen(prev => {
-      if (!prev) timeline.current.play();
-      else timeline.current.reverse();
+      if (!prev) openMenu();
+      else closeMenu(fast);
       return !prev;
     });
   }
@@ -87,9 +83,13 @@ export default function Header() {
         <div
           className={menuIcon}
           ref={el => (menuButton = el)}
-          onClick={handleMenu}
+          onClick={() => handleMenu(false)}
         />
-        <ul className={navLinks} ref={el => (menu = el)} onClick={handleMenu}>
+        <ul
+          className={navLinks}
+          ref={el => (menu = el)}
+          onClick={() => handleMenu(true)}
+        >
           <li className={navLink}>
             <Link href="#">
               <a>Work</a>
