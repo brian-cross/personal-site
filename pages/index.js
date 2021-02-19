@@ -1,98 +1,63 @@
-import { useEffect, useState } from "react";
-
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 import {
   main,
   headingContainer,
   heading,
   subHeading,
-  typed,
 } from "../styles/Home.module.scss";
 
 export default function Home() {
-  const strings = [
-    "build cool stuff.",
-    "promote your business.",
-    "make awesome websites.",
-    "increase your sales.",
-    "create useful apps.",
-  ];
+  let headings = useRef(null);
+  let line1 = useRef(null);
+  let line2 = useRef(null);
 
-  const [stringIndex, setStringIndex] = useState(0);
+  useEffect(() => {
+    gsap.from([line1, line2], {
+      yPercent: 50,
+      opacity: 0,
+      duration: 1.25,
+      delay: 0.5,
+      stagger: 1.5,
+      ease: "power1",
+    });
+
+    line1.addEventListener("mousemove", rotateText);
+    line1.addEventListener("mouseout", resetText);
+    line2.addEventListener("mousemove", rotateText);
+    line2.addEventListener("mouseout", resetText);
+  }, []);
+
+  function rotateText(e) {
+    const maxRotation = 15;
+    const options = { duration: 2, ease: "power2" };
+    const { clientWidth: width, clientHeight: height } = e.target;
+    const xPercent = gsap.utils.mapRange(0, width, -1, 1, e.offsetX);
+    const yPercent = gsap.utils.mapRange(0, height, 1, -1, e.offsetY);
+    gsap.to(e.target, { rotateY: maxRotation * xPercent, ...options });
+    gsap.to(e.target, { rotateX: maxRotation * yPercent, ...options });
+  }
+
+  function resetText(e) {
+    setTimeout(() => {
+      gsap.to(e.target, {
+        rotateX: 0,
+        rotateY: 0,
+        duration: 2,
+      });
+    }, 1000);
+  }
 
   return (
     <main className={main}>
-      <div className={headingContainer}>
-        <h1 className={heading}>Hey, I'm Brian.</h1>
-        {/* <h2 className={subHeading}>
-          {"I use code to: "}
-          <Typed
-            typingInterval={150}
-            typingDelay={1750}
-            backspaceInterval={75}
-            backspaceDelay={2000}
-            onComplete={phase => {
-              if (phase === "backspace")
-                setStringIndex(index => ++index % strings.length);
-            }}
-          >
-            {strings[stringIndex]}
-          </Typed>
-        </h2> */}
+      <div className={headingContainer} ref={el => (headings = el)}>
+        <h1 className={heading} ref={el => (line1 = el)}>
+          Hi, I'm Brian.
+        </h1>
+        <h2 className={subHeading} ref={el => (line2 = el)}>
+          I'm a Web Developer.
+        </h2>
       </div>
     </main>
   );
-}
-
-function Typed({
-  typingInterval,
-  typingDelay,
-  backspaceInterval,
-  backspaceDelay,
-  onComplete,
-  children,
-}) {
-  const [text, setText] = useState("");
-
-  function type() {
-    return new Promise(resolve => {
-      const timeout = setTimeout(() => {
-        let index = 0;
-        const characters = [];
-        const interval = setInterval(() => {
-          if (index < children.length) {
-            characters.push(children.charAt(index++));
-            setText(characters.join(""));
-          } else {
-            clearTimeout(timeout);
-            clearInterval(interval);
-            onComplete("type");
-            resolve();
-          }
-        }, typingInterval);
-      }, typingDelay);
-    });
-  }
-
-  function backspace() {
-    return new Promise(resolve => {
-      const timeout = setTimeout(() => {
-        const characters = children.split("");
-        const interval = setInterval(() => {
-          if (characters.pop()) setText(characters.join(""));
-          else {
-            clearTimeout(timeout);
-            clearInterval(interval);
-            onComplete("backspace");
-            resolve();
-          }
-        }, backspaceInterval);
-      }, backspaceDelay);
-    });
-  }
-
-  useEffect(() => {
-    type().then(backspace);
-  }, [children]);
-
-  return <span className={typed}>{text}</span>;
 }
