@@ -20,6 +20,8 @@ body {
   background-color: colors.$site-bg;
   font-family: fonts.$primary;
   color: colors.$font-primary;
+  perspective: 1500px;
+  user-select: none;
 }
 
 // h1,
