@@ -13,6 +13,7 @@ export default function Home() {
   let line2 = useRef(null);
 
   useEffect(() => {
+    gsap.set(headings, { visibility: "visible" });
     gsap.from([line1, line2], {
       yPercent: 50,
       opacity: 0,
