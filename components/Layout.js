@@ -3,7 +3,6 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { layout, content } from "../styles/Layout.module.scss";
 import { useRouter } from "next/router";
-import Transition from "./Transition";
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -23,11 +22,7 @@ export default function Layout({ children }) {
       </Head>
       <div className={layout}>
         <Header />
-
-        <div className={content}>
-          <Transition location={router.pathname}>{children}</Transition>
-        </div>
-
+        <div className={content}>{children}</div>
         <Footer />
       </div>
     </>
