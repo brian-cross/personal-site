@@ -17,7 +17,7 @@ export default function Contact() {
 
   useEffect(() => {
     const formElements = form.querySelectorAll("*");
-
+    gsap.set(form, { visibility: "visible" });
     gsap.from(formElements, {
       opacity: 0,
       y: 32,
