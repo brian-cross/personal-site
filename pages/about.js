@@ -1,8 +1,10 @@
-import { main } from "../styles/About.module.scss";
+import { useEffect } from "react";
 
-export default function About() {
+export default function About({ transitionWrapper }) {
+  useEffect(() => console.log(transitionWrapper));
+
   return (
-    <main className={main}>
+    <main>
       <h1>About Me</h1>
       <h2>How's it going?</h2>
       <p>
@@ -12,6 +14,28 @@ export default function About() {
         back. I'm constantly amazed at the power of modern web technologies and
         what can be done with it.
       </p>
+      <style jsx>
+        {`
+          main {
+            width: 90%;
+            max-width: 95rem;
+            margin: 0 auto;
+          }
+          p {
+            width: 100%;
+            max-width: 70ch;
+          }
+
+          ul {
+            padding-left: 1.125em;
+          }
+
+          li {
+            margin: 1em 0;
+            list-style: disc;
+          }
+        `}
+      </style>
     </main>
   );
 }

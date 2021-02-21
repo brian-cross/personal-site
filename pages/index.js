@@ -1,11 +1,5 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
-import {
-  main,
-  headingContainer,
-  heading,
-  subHeading,
-} from "../styles/Home.module.scss";
 
 export default function Home() {
   let headings = useRef(null);
@@ -50,15 +44,43 @@ export default function Home() {
   }
 
   return (
-    <main className={main}>
-      <div className={headingContainer} ref={el => (headings = el)}>
-        <h1 className={heading} ref={el => (line1 = el)}>
+    <main>
+      <div className="heading-container" ref={el => (headings = el)}>
+        <h1 className="heading" ref={el => (line1 = el)}>
           Hi, I'm Brian.
         </h1>
-        <h2 className={subHeading} ref={el => (line2 = el)}>
+        <h2 className="sub-heading" ref={el => (line2 = el)}>
           I'm a Web Developer.
         </h2>
       </div>
+      <style jsx>
+        {`
+          main {
+            width: 90%;
+            max-width: 95rem;
+            margin: 0 auto;
+            height: 100%;
+            perspective: clamp(500px, 90vw, 1500px);
+          }
+
+          .heading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            visibility: hidden;
+          }
+
+          .heading {
+            font-size: clamp(44px, 8vw, 96px);
+            margin-bottom: 0;
+          }
+
+          .sub-heading {
+            font-size: clamp(22px, 4vw, 48px);
+            margin: 0;
+          }
+        `}
+      </style>
     </main>
   );
 }
