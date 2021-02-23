@@ -4,14 +4,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          <link rel="dns-prefetch" href="https://fonts.googleapis.com"></link>
-          <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com"
-            crossorigin
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />
