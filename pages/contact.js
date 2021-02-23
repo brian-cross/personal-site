@@ -59,10 +59,7 @@ export default function Contact() {
           display: flex;
           align-items: stretch;
           justify-content: center;
-        }
-
-        @media screen and (min-width: 700px) {
-          main {
+          @media screen and (min-width: 700px) {
             align-items: center;
             justify-content: flex-end;
           }
