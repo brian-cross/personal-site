@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
-import { layout, content } from "../styles/Layout.module.scss";
 
 export default function Layout({ children }) {
   return (
@@ -17,11 +16,24 @@ export default function Layout({ children }) {
           content="I'm a web developer from Canada. I build lightning fast websites using modern frameworks such as React and Next.JS as well as vanilla JavaScript, HTML, and CSS."
         ></meta>
       </Head>
-      <div className={layout}>
+      <div className="layout">
         <Header />
-        <div className={content}>{children}</div>
+        <div className="content">{children}</div>
         <Footer />
       </div>
+      <style jsx>{`
+        .layout {
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          width: 100%;
+        }
+
+        .content {
+          flex-grow: 1;
+          width: 100%;
+        }
+      `}</style>
     </>
   );
 }
