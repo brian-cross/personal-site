@@ -1,9 +1,9 @@
 import "normalize.css";
-import "../styles/globals.scss";
 import Layout from "../components/Layout";
 import { PageTransition } from "next-page-transitions";
+import globalStyles from "../styles/global";
 
-const TIMEOUT = 500;
+const TIMEOUT = 300;
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -23,18 +23,21 @@ function MyApp({ Component, pageProps, router }) {
 
           .page-transition-enter-active {
             opacity: 1;
-            transition: opacity ${TIMEOUT}ms ease-in;
+            transition: ${`opacity ${TIMEOUT}ms ease-in`};
           }
 
           .page-transition-exit {
             opacity: 0;
-            transition: opacity ${TIMEOUT}ms ease-out;
+            transition: ${`opacity ${TIMEOUT}ms ease-in`};
           }
 
           .page-transition-exit-active {
             opacity: 0;
           }
         `}
+      </style>
+      <style jsx global>
+        {globalStyles}
       </style>
     </Layout>
   );
